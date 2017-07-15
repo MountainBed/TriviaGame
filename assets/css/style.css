@@ -19,3 +19,6 @@ body {
   margin: 10px;
   border: 3px solid blue;
 }
+.choices {
+  height: 25%;
+}

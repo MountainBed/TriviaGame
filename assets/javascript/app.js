@@ -1,9 +1,36 @@
 var questionBank = [
-{question: "Question 00", correct: "correct answer 00", distractor00: "distractor00", distractor01: "distractor01", distractor02: "distractor02", correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
-{question: "Question 01", correct: "correct answer 01", distractor00: "distractor10", distractor01: "distractor11", distractor02: "distractor12", correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
-{question: "Question 02", correct: "correct answer 02", distractor00: "distractor20", distractor01: "distractor21", distractor02: "distractor22", correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
-{question: "Question 03", correct: "correct answer 03", distractor00: "distractor30", distractor01: "distractor31", distractor02: "distractor32", correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
-{question: "Question 04", correct: "correct answer 04", distractor00: "distractor40", distractor01: "distractor41", distractor02: "distractor42", correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"}
+{question: "Question 00", correct: "correctanswer00", distractor: ["distractor00", "distractor01", "distractor02"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
+{question: "Question 01", correct: "correctanswer01", distractor: ["distractor10", "distractor11", "distractor12"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
+{question: "Question 02", correct: "correctanswer02", distractor: ["distractor20", "distractor21", "distractor22"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
+{question: "Question 03", correct: "correctanswer03", distractor: ["distractor30", "distractor31", "distractor32"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
+{question: "Question 04", correct: "correctanswer04", distractor: ["distractor40", "distractor41", "distractor42"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"}
 ];
 
-console.log(questionBank[0].question);
+$(document).ready(function() {
+
+  $("#openbutton").click(function(){
+    var correctchoice = Math.floor(Math.random() * (4));
+    var j = 0;
+    console.log(correctchoice);
+
+    for (var i = 0; i < 4; i++){
+      var answerChoice = $("<div>");
+      answerChoice.addClass("text-center choices");
+
+      if (i === correctchoice){
+        answerChoice.text(questionBank[0].correct);
+        answerChoice.attr("value",1);
+      }
+      else{
+        answerChoice.text(questionBank[0].distractor[j]);
+        answerChoice.attr("value",0);
+        j++;
+      }
+
+      $("#answerarea").append(answerChoice);
+    }
+
+  });
+
+
+})
