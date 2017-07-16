@@ -4,7 +4,7 @@ var questionBank = [
 {question: "What is the core of the Elder wand?", correct: "A tail hair of a Thestral", distractor: ["A Veela hair", "A dragon heartstring", "A giant's beard hair"], correctgif: "assets/images/correct1.gif", incorrectgif: "assets/images/incorrect1.gif"}, 
 {question: "Which of the following is NOT a Horcrux?", correct: "Gryffindor's sword", distractor: ["Harry Potter", "Ravenclaw's Diadem", "Nagini"], correctgif: "assets/images/correct2.gif", incorrectgif: "assets/images/incorrect2.gif"},
 {question: "How many Knuts to a Sickle?", correct: "29 Knuts", distractor: ["10 Knuts", "31 Knuts", "5 Knuts"], correctgif: "assets/images/correct3.gif", incorrectgif: "assets/images/incorrect3.gif"}, 
-{question: "What form did Ron's patronus take?", correct: "A Jack Russell Terrier", distractor: ["A serpent", "A weasel", "A griffen"], correctgif: "assets/images/correct4.gif", incorrectgif: "assets/images/incorrect4.gif"}
+{question: "What form did Ron's patronus take?", correct: "A Jack Russell Terrier", distractor: ["A serpent", "A weasel", "A griffin"], correctgif: "assets/images/correct4.gif", incorrectgif: "assets/images/incorrect4.gif"}
 ];
 
 // Variable declaration
@@ -81,7 +81,7 @@ var resetscreen = function() {
   correctTotalMsg.text("Correct answers: " + win);
   incorrectTotalMsg.text("Incorrect answers: " + loss);
   unansweredMsg.text("Unanswered: " + unanswered);
-  startoverbtn.text("Use the Time Turner!");
+  startoverbtn.text("Use the Time-Turner!");
 
   $("#questionarea").empty();
   $("#questionarea").append(finalMsg, correctTotalMsg, incorrectTotalMsg, unansweredMsg, '<br>', startoverbtn);
