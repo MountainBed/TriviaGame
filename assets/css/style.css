@@ -1,14 +1,18 @@
-
 body {
   background-image: url("../images/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: left top;
+  background-position: left bottom;
   background-attachment: fixed;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 2em;
-  font-style: italic;
+  /*font-style: italic;*/
   font-weight: bold;
+  color: white;
+}
+
+h1 {
+  font-size: 3em;
 }
 #bottomarea {
   height: 500px;
@@ -16,21 +20,31 @@ body {
 #questionarea {
   padding: 2em;
   margin: 10px;
-  border: 3px solid red;
   text-align: center;
+  font-family: 'Glegoo', serif;
 }
 #answerarea {
   padding: 1em;
   margin: 10px;
-  border: 3px solid blue;
   text-align: center;
+  font-family: 'Glegoo', serif;
 }
 .choices {
   height: 25%;
 }
 img {
-  width: 200px;
+  height: 250px;
+  border: 2px solid goldenrod;
 }
 #openbutton, #redo {
   font-size: 2em;
+}
+.choices {
+  margin: 10px;
+}
+.choices:hover {
+  color: indianred;
+}
+.choices:active {
+  color: goldenrod;
 }

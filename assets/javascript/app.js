@@ -1,11 +1,13 @@
+// Question bank that is an array of objectives. Each element is a different questions. Code set up in such a way to change dymanically based on number of elements
 var questionBank = [
-{question: "Question 00", correct: "correctanswer00", distractor: ["distractor00", "distractor01", "distractor02"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
-{question: "Question 01", correct: "correctanswer01", distractor: ["distractor10", "distractor11", "distractor12"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
-{question: "Question 02", correct: "correctanswer02", distractor: ["distractor20", "distractor21", "distractor22"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
-{question: "Question 03", correct: "correctanswer03", distractor: ["distractor30", "distractor31", "distractor32"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"},  
-{question: "Question 04", correct: "correctanswer04", distractor: ["distractor40", "distractor41", "distractor42"], correctgif: "assets/images/win.png", incorrectgif: "assets/images/loss.png"}
+{question: "First think of the person who lives in disguise, who deals in secrets and tells naught but lies. Next, tell me what’s always the last thing to mend, the middle of middle and end of the end? And finally give me the sound often heard during the search for a hard-to-find word. Now string them together, and answer me this, which creature would you be unwilling to kiss?", correct: "A spider", distractor: ["An imposter", "A liger", "A badger"], correctgif: "assets/images/correct0.gif", incorrectgif: "assets/images/incorrect0.gif"},  
+{question: "What is the core of the Elder wand?", correct: "A tail hair of a Thestral", distractor: ["A Veela hair", "A dragon heartstring", "A giant's beard hair"], correctgif: "assets/images/correct1.gif", incorrectgif: "assets/images/incorrect1.gif"}, 
+{question: "Which of the following is NOT a Horcrux?", correct: "Gryffindor's sword", distractor: ["Harry Potter", "Ravenclaw's Diadem", "Nagini"], correctgif: "assets/images/correct2.gif", incorrectgif: "assets/images/incorrect2.gif"},
+{question: "How many Knuts to a Sickle?", correct: "29 Knuts", distractor: ["10 Knuts", "31 Knuts", "5 Knuts"], correctgif: "assets/images/correct3.gif", incorrectgif: "assets/images/incorrect3.gif"}, 
+{question: "What form did Ron's patronus take?", correct: "A Jack Russell Terrier", distractor: ["A serpent", "A weasel", "A griffen"], correctgif: "assets/images/correct4.gif", incorrectgif: "assets/images/incorrect4.gif"}
 ];
 
+// Variable declaration
 var questionNum = 0;
 var win = 0;
 var loss = 0;
@@ -15,6 +17,7 @@ var answerGiven = false;
 var timeLeft = 10;
 var intervalId;
 
+// Function to display questions, can be used on inital and reset
 var displayQuestion = function() {
   answerGiven = false;
   timeLeft = 10;
@@ -47,6 +50,7 @@ var displayQuestion = function() {
 
 };
 
+// Timer function, triggers non-answer when hits zero
 var timer = function() {
 
   if ( timeLeft === 0) {
@@ -60,6 +64,7 @@ var timer = function() {
   }
 };
 
+// Final screen after all questions have been displayed
 var resetscreen = function() {
   var finalMsg = $("<div>");
   var correctTotalMsg = $("<div>");
@@ -82,6 +87,8 @@ var resetscreen = function() {
   $("#questionarea").append(finalMsg, correctTotalMsg, incorrectTotalMsg, unansweredMsg, '<br>', startoverbtn);
 
 };
+
+// reset values to initial values for start of new game
 var resetValues = function() {
   questionNum = 0;
   win = 0;
@@ -89,7 +96,9 @@ var resetValues = function() {
   unanswered = 0;
   answerGiven = false;
   timeLeft = 10;
-}
+};
+
+// Displays loss screen with answer
 var lossScreen = function() {
   var displayLossMsg = $("<div>");
   var incorrectImg = $("<img>");
@@ -98,17 +107,15 @@ var lossScreen = function() {
   clearInterval(intervalId);
   $("#timearea").html("Time remaining: " + timeLeft);
 
-  displayLossMsg.html("The correct answer was: " + questionBank[questionNum].correct);
+  displayLossMsg.html("<br>The correct answer was: " + questionBank[questionNum].correct);
   incorrectImg.attr('src', questionBank[questionNum].incorrectgif);
 
   $("#answerarea").empty();
-  $("#questionarea").append(displayLossMsg, incorrectImg);
+  $("#questionarea").append(displayLossMsg, '<br>', incorrectImg);
   
   loss++;
   questionNum++;
 
-  console.log("questionNum " + questionNum);
-  console.log("question bank length " + questionBank.length);
 
   if ( questionNum == questionBank.length){
     setTimeout(resetscreen, 1000 * timerBetween);
@@ -118,6 +125,8 @@ var lossScreen = function() {
   }
   
 };
+
+// Displays loss screen with non-answer
 var lossScreenUn = function() {
   var displayLossMsg = $("<div>");
   var incorrectImg = $("<img>");
@@ -126,17 +135,14 @@ var lossScreenUn = function() {
   clearInterval(intervalId);
   $("#timearea").html("Time remaining: " + timeLeft);
 
-  displayLossMsg.html("You did not answer! The correct answer was: " + questionBank[questionNum].correct);
+  displayLossMsg.html("<br>You did not answer! The correct answer was: " + questionBank[questionNum].correct);
   incorrectImg.attr('src', questionBank[questionNum].incorrectgif);
 
   $("#answerarea").empty();
-  $("#questionarea").append(displayLossMsg, incorrectImg);
+  $("#questionarea").append(displayLossMsg, '<br>', incorrectImg);
   
   unanswered++;
   questionNum++;
-
-  console.log("questionNum " + questionNum);
-  console.log("question bank length " + questionBank.length);
 
   if ( questionNum == questionBank.length){
     setTimeout(resetscreen, 1000 * timerBetween);
@@ -146,6 +152,8 @@ var lossScreenUn = function() {
   }
   
 };
+
+// Displays screen on correct answer
 var winScreen = function() {
   var displayWinMsg = $("<div>");
   var correctImg = $("<img>");
@@ -154,16 +162,14 @@ var winScreen = function() {
   clearInterval(intervalId);
   $("#timearea").html("Time remaining: " + timeLeft);
 
-  displayWinMsg.html("One point for Gryffindor!");
+  displayWinMsg.html("<br>One point for Gryffindor!");
   correctImg.attr('src', questionBank[questionNum].correctgif);
 
   $("#answerarea").empty();
-  $("#questionarea").append(displayWinMsg, correctImg);
+  $("#questionarea").append(displayWinMsg, '<br>', correctImg);
 
   win++;
   questionNum++;
-  console.log("questionNum " + questionNum);
-  console.log("question bank length " + questionBank.length);
 
   if ( questionNum == questionBank.length){
     setTimeout(resetscreen, 1000 * timerBetween);
@@ -173,41 +179,39 @@ var winScreen = function() {
   }
 };
 
-
+// Main body that reads user input
 $(document).ready(function() {
 
-  $("#openbutton").click(function(){
-    displayQuestion();
-  });
-
-  $("#answerarea").on("click", function(e) {
-    console.log(this);
-
-    var check = e.target.getAttribute("correctvalue");
-    check = parseInt(check);
+// Start button
+$("#openbutton").click(function(){
+  displayQuestion();
+});
 
 
-    console.log(check);
+// Reads user input after choices have been generated
+$("#answerarea").on("click", function(e) {
 
-    if(check === 1){
-      console.log("correct choice");
-      if(!answerGiven){
-        winScreen();
-      }
+  var check = e.target.getAttribute("correctvalue");
+  check = parseInt(check);
+
+  if(check === 1){
+    if(!answerGiven){
+      winScreen();
     }
+  }
 
-    else {
-      console.log("incorrect choice");
-      if(!answerGiven){
-        lossScreen();
-      }
+  else {
+    if(!answerGiven){
+      lossScreen();
     }
+  }
 
-  });
+});
 
-  $('#questionarea').on('click', '#redo', function(){
-    resetValues();
-    displayQuestion();
-  });
+// Reads user input for startover button at end of game
+$('#questionarea').on('click', '#redo', function(){
+  resetValues();
+  displayQuestion();
+});
 
 });
