@@ -1,9 +1,14 @@
+
 body {
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: left top;
-    background-attachment: fixed;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-attachment: fixed;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 2em;
+  font-style: italic;
+  font-weight: bold;
 }
 #bottomarea {
   height: 500px;
@@ -12,13 +17,20 @@ body {
   padding: 2em;
   margin: 10px;
   border: 3px solid red;
+  text-align: center;
 }
 #answerarea {
-  height: 80%;
   padding: 1em;
   margin: 10px;
   border: 3px solid blue;
+  text-align: center;
 }
 .choices {
   height: 25%;
+}
+img {
+  width: 200px;
+}
+#openbutton, #redo {
+  font-size: 2em;
 }
