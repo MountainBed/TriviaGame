@@ -14,13 +14,13 @@ var loss = 0;
 var unanswered = 0;
 var timerBetween = 5;
 var answerGiven = false;
-var timeLeft = 10;
+var timeLeft = 20;
 var intervalId;
 
 // Function to display questions, can be used on inital and reset
 var displayQuestion = function() {
   answerGiven = false;
-  timeLeft = 10;
+  timeLeft = 20;
 
   var correctchoice = Math.floor(Math.random() * (4));
   var j = 0;
@@ -95,7 +95,7 @@ var resetValues = function() {
   loss = 0;
   unanswered = 0;
   answerGiven = false;
-  timeLeft = 10;
+  timeLeft = 20;
 };
 
 // Displays loss screen with answer
